@@ -15,7 +15,14 @@ namespace MvcLogin.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            if (!User.Identity.IsAuthenticated)
+            {
+                ViewBag.Message = "Nejsi přihlášen!";
+            }
+            else
+            {
+                ViewBag.Message = "Your application description page.";
+            }
 
             return View();
         }
